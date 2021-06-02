@@ -1,6 +1,6 @@
 # Programme de sauvegarde automaique
 # Créer par Florent FOVET en 2021
-# Version v1.0
+# Version v1.0.1
 
 # Importation des modules
 import platform
@@ -13,6 +13,14 @@ def pc_name():
     pcname = platform.node()
     return pcname
 
+
+# définition du système d'exploitation
+system_exploitation = platform.system()
+sys_explo = len(system_exploitation)
+if sys_explo <= 5:
+    sys_exp = '/'
+else:
+    sys_exp = '\\'
 
 # Les variable de S3
 # ID de connexion à AWS S3
@@ -54,24 +62,18 @@ resource = boto3.resource(
     region_name = rg
 )
 
-# Lister le/les buckets du S3
-response = client.list_buckets()
-
-# Affiché les Buckets du S3
-print('Printing bucket names...')
-for bucket in response['Buckets']:
-    print(f'Bucket Name: {bucket["Name"]}')
-
 repertoire = os.fsencode(repertoire1)
+
+print(sys_exp)
 
 for file in os.listdir(repertoire):
     filename = os.fsdecode(file)
-    if filename.endswith(".jpeg") or filename.endswith(".jpg") or filename.endswith(".png"):
+    if filename.endswith(".zip") or filename.endswith(".jpg") or filename.endswith(".png"):
 
-        strg = repertoire1 +'\\'+ filename
+        strg = repertoire1 + sys_exp + filename
         print(strg)
         file = open(strg,'rb')
         object = resource.Object(bt, filename)
-        object.put(Body=file,ContentType='image/jpeg')
+        object.put(Body=file,ContentType='')
     else:
         continue
