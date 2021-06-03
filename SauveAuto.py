@@ -1,10 +1,12 @@
-# Programme de sauvegarde automaique
-# Créer par Florent FOVET en 2021
+# Programme de sauvegarde automatique
+# Auteur : Florent FOVET
+# Date : 06/2021
 # Version v1.0.1
 
 # Importation des modules
 import platform
 import os
+import zipfile
 import boto3
 
 
@@ -14,7 +16,7 @@ def pc_name():
     return pcname
 
 
-# définition du système d'exploitation
+# Définition du système d'exploitation
 system_exploitation = platform.system()
 sys_explo = len(system_exploitation)
 if sys_explo <= 5:
@@ -62,7 +64,9 @@ resource = boto3.resource(
     region_name = rg
 )
 
-# Déf de répertoire
+
+
+# Définition et copie du répertoire
 repertoire = os.fsencode(repertoire1)
 
 for file in os.listdir(repertoire):
