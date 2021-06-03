@@ -62,9 +62,8 @@ resource = boto3.resource(
     region_name = rg
 )
 
+# Déf de répertoire
 repertoire = os.fsencode(repertoire1)
-
-print(sys_exp)
 
 for file in os.listdir(repertoire):
     filename = os.fsdecode(file)
