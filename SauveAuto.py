@@ -1,13 +1,13 @@
 # Programme de sauvegarde automatique
 # Auteur : Florent FOVET
 # Date : 06/2021
-# Version v1.0.1
+# Version v1.0.2 Zip Extension
 
 # Importation des modules
 import platform
 import os
-import zipfile
 import boto3
+import zipfile
 
 
 # Nom de la machine
@@ -16,7 +16,20 @@ def pc_name():
     return pcname
 
 
-# Définition du système d'exploitation
+# Définition des paramèttre de fichier à compressé
+def retrieve_file_paths(dirName):
+    # chemins de fichiers de configuration variables
+    filePaths = []
+    # Lire tous les répertoires, sous-répertoires et listes de fichiers
+    for root, directories, files in os.walk(dirName):
+        for filename in files:
+            # Create the full filepath by using os module.
+            filePath = os.path.join(root, filename)
+            filePaths.append(filePath)
+    return filePaths
+
+
+# définition du système d'exploitation
 system_exploitation = platform.system()
 sys_explo = len(system_exploitation)
 if sys_explo <= 5:
@@ -45,6 +58,10 @@ bt = bt_o.read()
 rep_0 = open(str("REPSAUVE.S3"))
 repertoire1 = rep_0.read()
 
+# Définiion du réperoire à sauvegardé
+comp_0 = open(str("COMPRESS.S3"))
+sauve = comp_0.read()
+
 # Nom du PC
 print("Nom du PC : ", pc_name())
 
@@ -64,16 +81,30 @@ resource = boto3.resource(
     region_name = rg
 )
 
+# Création du fichier de sauvegarde
+# Le répertoire à compressé
+dir_name = repertoire1
 
+# Appelle la fonction pour récupérer tous les fichiers et dossiers du répertoire assigné
+filePaths = retrieve_file_paths(dir_name)
 
-# Définition et copie du répertoire
-repertoire = os.fsencode(repertoire1)
+# Création du fichier compressé au format Zip
+zip_file = zipfile.ZipFile(sauve + sys_exp + pc_name() + '-archive.zip', 'w')
+with zip_file:
+        # écrit chacun des fichiers par un
+    for file in filePaths:
+        zip_file.write(file)
+
+    print('Le fichier ' + pc_name() + '-archive.zip a été créé avec succès !')
+
+# Configuration fichers à sauvegardé
+repertoire = os.fsencode(sauve)
 
 for file in os.listdir(repertoire):
     filename = os.fsdecode(file)
-    if filename.endswith(".zip") or filename.endswith(".jpg") or filename.endswith(".png"):
+    if filename.endswith(".zip"):
 
-        strg = repertoire1 + sys_exp + filename
+        strg = sauve + sys_exp + filename
         print(strg)
         file = open(strg,'rb')
         object = resource.Object(bt, filename)
