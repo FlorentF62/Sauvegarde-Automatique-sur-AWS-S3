@@ -23,7 +23,6 @@ def retrieve_file_paths(dirName):
     # Lire tous les répertoires, sous-répertoires et listes de fichiers
     for root, directories, files in os.walk(dirName):
         for filename in files:
-            # Create the full filepath by using os module.
             filePath = os.path.join(root, filename)
             filePaths.append(filePath)
     return filePaths
@@ -55,12 +54,12 @@ bt_o = open(str("BUCKET.S3"))
 bt = bt_o.read()
 
 # Définiion du réperoire à sauvegardé
-rep_0 = open(str("REPSAUVE.S3"))
-repertoire1 = rep_0.read()
-
-# Définiion du réperoire à sauvegardé
 comp_0 = open(str("COMPRESS.S3"))
 sauve = comp_0.read()
+
+# Définiion du réperoire à compressé
+rep_0 = open(str("REPSAUVE.S3"))
+repertoire1 = rep_0.read()
 
 # Nom du PC
 print("Nom du PC : ", pc_name())
