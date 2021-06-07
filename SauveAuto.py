@@ -1,11 +1,12 @@
 # Programme de sauvegarde automatique
 # Auteur : Florent FOVET
 # Date : 06/2021
-# Version v1.0.2 Zip Extension
+# Version v1.0.3 Zip Extension
 
 # Importation des modules
 import platform
 import os
+import datetime
 import boto3
 import zipfile
 
@@ -14,6 +15,13 @@ import zipfile
 def pc_name():
     pcname = platform.node()
     return pcname
+
+
+# Date de la machine
+def date():
+    now = datetime.datetime.now()
+    date = now.strftime("%d-%m-%Y")
+    return date
 
 
 # Définition des paramèttre de fichier à compressé
@@ -88,7 +96,7 @@ dir_name = repertoire1
 filePaths = retrieve_file_paths(dir_name)
 
 # Création du fichier compressé au format Zip
-zip_file = zipfile.ZipFile(sauve + sys_exp + pc_name() + '-archive.zip', 'w')
+zip_file = zipfile.ZipFile(sauve + sys_exp + pc_name() + '-archive' + date() + '.zip', 'w')
 with zip_file:
     # écrit chacun des fichiers par un
     for file in filePaths:
