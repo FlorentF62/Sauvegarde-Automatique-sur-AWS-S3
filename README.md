@@ -1,8 +1,8 @@
 ![Python 3.9](https://img.shields.io/badge/python-3.9%2B-green)
 ![Boto3](https://img.shields.io/badge/boto3-AWS_S3-yellow)
 ![GNU/GPL-V3](https://img.shields.io/badge/GNU-GPLv3-blue)
-![Windows](https://img.shields.io/badge/Windows)
-![Linux](https://img.shields.io/badge/Linux)
+![Windows](https://img.shields.io/badge/Windows-Python)
+![Linux](https://img.shields.io/badge/Linux-Python)
 
 # Sauvegarde Automatique sur AWS S3
 
