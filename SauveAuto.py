@@ -1,7 +1,7 @@
 # Programme de sauvegarde automatique
 # Auteur : Florent FOVET
 # Date : 06/2021
-# Version v1.0.5
+# Version v1.0.6
 
 # Importation des modules
 import platform
@@ -69,6 +69,10 @@ sauve = comp_0.read()
 rep_0 = open(str("REPSAUVE.S3"))
 repertoire1 = rep_0.read()
 
+# Définiion du réperoire à sauvegardé
+arc_0 = open(str("ARCHIVE.S3"))
+archive = arc_0.read()
+
 # Nom du PC
 print("Nom du PC : ", pc_name())
 
@@ -96,12 +100,13 @@ dir_name = repertoire1
 filePaths = retrieve_file_paths(dir_name)
 
 # Création du fichier compressé au format Zip
-zip_file = zipfile.ZipFile(sauve + sys_exp + pc_name() + '-archive-' + date() + '.zip', 'w')
+zip = str(pc_name() + '-' + archive + '-' + date() + '.zip')
+zip_file = zipfile.ZipFile(sauve + sys_exp + zip, 'w')
 with zip_file:
     # écrit chacun des fichiers par un
     for file in filePaths:
         zip_file.write(file)
-    filename2 = str(pc_name() + '-archive-' + date() + '.zip')
+    filename2 = str(zip)
     print('Le fichier ' + filename2 + ' a été créé avec succès !')
 
 # Configuration fichers à sauvegardé
