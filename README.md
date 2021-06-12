@@ -50,4 +50,7 @@ Les deux fichier de configuration pour la création et l'envoie de l'archive son
   - REPSAVE.S3 (inscrir le répertoire à sauuver)
   - COMPRESS.S3 (inscrir le répertoire temporaire)
 
-Pour ce deux fichier 
+Pour ce deux fichier il y a une vérification sur quel système le logiciel est executé, mais pour Linux, on écrit simplement comme on écrit sous Linux classiquement, exemple /home, mais pour Windows, il faut écrire avec un double "\", exemple C:\\SAUVE.
+
+Pour le fichier configuration ARCHIVE.S3, ce la nom que vous voulez donné à votre archeve, donc nom de l'archive = nom de la machine + mot dans le fichier ARCHIVE.S3 + date.zip.
+
