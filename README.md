@@ -38,7 +38,7 @@ Le fichier contient 2 lignes, les valeurs sont séparées par des virgules, dans
 
 Ces 2 valeurs sont à copier respectivement dans ID.S3 et ACCESS_KEY.S3, pour pouvoir se connecter à S3
 
-Mais, il y a encore des modifications à faire, deux fichiers de configuration pour le S3 et deux autres, pour la création et la sauvegarde du du zip.
+Mais, il y a encore des modifications à faire, deux fichiers de configuration pour le S3 et deux autres, pour la création et la sauvegarde du zip.
 
 Les deux fichiers de configuration pour le S3 sont :
 
