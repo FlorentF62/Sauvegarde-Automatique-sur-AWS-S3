@@ -59,7 +59,6 @@ rg = rg_o.read()
 # Définition du bucket
 bt_o = open(str("BUCKET.S3"))
 bt = bt_o.read()
-bt0 = str(bt + '/' + pc_name() + '/')
 
 # Définiion du réperoire à compresser
 comp_0 = open(str("COMPRESS.S3"))
