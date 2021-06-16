@@ -53,3 +53,13 @@ Les deux fichier de configuration pour la création et l'envoi de l'archive sont
 Pour ces deux fichiers, il y a une vérification sur quel système le logiciel est exécuté, sous Linux , par exemple /home, mais pour Windows, il faut écrire avec un double "\", exemple C:\\SAUVE.
 
 Pour le fichier configuration ARCHIVE.S3, c'est le nom que vous voulez donner à votre archive, donc nom de l'archive = nom de la machine + mot dans le fichier ARCHIVE.S3 + date.zip.
+
+______________________________________________________________________________________________________________________________________________________________________________
+
+### Appel et execution du script
+
+![Appel](https://zupimages.net/up/21/24/3uit.png)
+
+### Vérification sur le S3
+
+![verif](https://zupimages.net/up/21/24/0mx0.png)
