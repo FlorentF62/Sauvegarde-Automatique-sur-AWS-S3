@@ -6,6 +6,9 @@
 
 # Sauvegarde Automatique sur AWS S3
 
+╔═════════════════════════════╗
+
+
 Dans le cadre de mon projet 6 pour ma formation, je dois développer un projet Opensources, j'ai donc décidé de faire un petit outil en Python, qui a pour but, une sauvegarde automatique, qui envoie le fichier créer au format zip sur le AWS S3.
 
 Le script python compresse les fichiers au format zip d'un répertoire donné, il est créé dans le répertoire temporaire choisi par l'utilisateur, pour être ensuite, être envoyé dans le répertoire au nom de la machine qui est sauvegardé, comme cela, il est plus facile de retrouver les sauvegardes des machines.
