@@ -55,6 +55,8 @@ Pour ces deux fichiers, il y a une vérification sur quel système le logiciel e
 
 Pour le fichier configuration ARCHIVE.S3, c'est le nom que vous voulez donner à votre archive, donc nom de l'archive = nom de la machine + mot dans le fichier ARCHIVE.S3 + date.zip.
 
+Création d'un fichier log.
+
 ______________________________________________________________________________________________________________________________________________________________________________
 
 ### Appel et execution du script
