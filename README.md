@@ -4,10 +4,9 @@
 ![Windows](https://img.shields.io/badge/Compatible-Windows-red)
 ![Linux](https://img.shields.io/badge/Compatible-Linux-white)
 
-# Sauvegarde Automatique sur AWS S3
-
 # ╔═════════════════════════════╗
-
+# ║Sauvegarde Automatique sur AWS S3 ║
+# ╚═════════════════════════════╝
 
 Dans le cadre de mon projet 6 pour ma formation, je dois développer un projet Opensources, j'ai donc décidé de faire un petit outil en Python, qui a pour but, une sauvegarde automatique, qui envoie le fichier créer au format zip sur le AWS S3.
 
