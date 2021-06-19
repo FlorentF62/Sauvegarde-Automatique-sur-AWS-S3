@@ -145,6 +145,8 @@ for file in os.listdir(repertoire):
 
 # Création d'un fichier log pour les sauvegarde
 filelog = open("Sauve-" + date() + ".log", "w+")
+filelog.write("Votre système d'exploitation est : " + system_exploitation + "\n")
+filelog.write("\n")
 filelog.write("Log de la sauvegarde sur S3 du " + date() + "\n")
 filelog.write("\n")
 filelog.write("Le fichier zip créer est le " + zip + "\n")
