@@ -1,7 +1,7 @@
 # Programme de sauvegarde automatique
 # Auteur : Florent FOVET
 # Date : 06/2021
-# Version v1.0.6
+# Version v1.0.7
 
 # Importation des modules
 import platform
@@ -59,7 +59,6 @@ rg = rg_o.read()
 # Définition du bucket
 bt_o = open(str("BUCKET.S3"))
 bt = bt_o.read()
-bt0 = str(bt + '/' + pc_name() + '/')
 
 # Définiion du réperoire à compresser
 comp_0 = open(str("COMPRESS.S3"))
@@ -75,6 +74,12 @@ archive = arc_0.read()
 
 # Nom du PC
 print("Nom du PC : ", pc_name())
+
+# Date du jour
+print("Nous sommes le : ", date())
+
+# Sauvegarde
+print("Les sauvegarde sera pour : ", archive)
 
 # Connexion au S3 en mod client
 client = boto3.client(
@@ -137,3 +142,18 @@ for file in os.listdir(repertoire):
 
     else:
         continue
+
+# Création d'un fichier log pour les sauvegarde
+filelog = open("Sauve-" + date() + ".log", "w+")
+filelog.write("Votre système d'exploitation est : " + system_exploitation + "\n")
+filelog.write("\n")
+filelog.write("Log de la sauvegarde sur S3 du " + date() + "\n")
+filelog.write("\n")
+filelog.write("Le fichier zip créer est le " + zip + "\n")
+filelog.write("\n")
+filelog.write("Le fichier envoyé sur le S3 " + strg + "\n")
+filelog.write("\n")
+filelog.write("Le nom de l'ordinateur : " + pc_name() + "\n")
+filelog.write("\n")
+filelog.write("Le dossier sauvegardé est : " + repertoire1 + "\n")
+filelog.close()
